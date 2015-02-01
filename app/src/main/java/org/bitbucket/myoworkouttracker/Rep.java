@@ -84,4 +84,16 @@ public class Rep implements Serializable{
             return Integer.toString(sec) + "s";
     }
 
+    public ArrayList<AbstractMap.SimpleEntry<Long,Double>> getDataX(){
+        return dataX;
+    }
+
+    public ArrayList<AbstractMap.SimpleEntry<Long,Double>> getDataZ(){
+        return dataZ;
+    }
+
+    public long getStartTime(){
+        return startTime;
+    }
+
 }

@@ -2,29 +2,41 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:background="@android:color/white"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:padding="5dp">
 
     <TextView
         android:id="@+id/duration"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="36dp"/>
-
-    <TextView
-        android:id="@+id/repNum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="24dp"/>
+        android:textSize="36dp"
+        android:textColor="@android:color/darker_gray"/>
 
     <TextView
         android:id="@+id/setNum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="24dp"/>
+        android:textSize="24dp"
+        android:textColor="@android:color/darker_gray"/>
+
+    <TextView
+        android:id="@+id/repNum"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="24dp"
+        android:textColor="@android:color/darker_gray"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        android:layout_marginBottom="20dp"
+        />
 
     <lecho.lib.hellocharts.view.LineChartView
         android:id="@+id/chart"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginBottom="20dp"/>
 
 </LinearLayout>

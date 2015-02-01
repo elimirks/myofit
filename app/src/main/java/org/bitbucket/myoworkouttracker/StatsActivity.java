@@ -33,6 +33,7 @@ import android.widget.RelativeLayout;
 import android.graphics.Color;
 import android.widget.Toast;
 
+import java.util.AbstractMap;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -40,6 +41,9 @@ import java.util.Map;
 
 import org.androidannotations.annotations.*;
 
+import lecho.lib.hellocharts.model.Line;
+import lecho.lib.hellocharts.model.LineChartData;
+import lecho.lib.hellocharts.model.PointValue;
 import lecho.lib.hellocharts.view.LineChartView;
 
 @EActivity(R.layout.activity_stats)
@@ -69,7 +73,7 @@ public class StatsActivity extends ActionBarActivity {
         PopupWindow pw = new PopupWindow(
                 inflater.inflate(R.layout.popup_info, null, false),
                 (int) (width * .8),
-                (int) (height * .8),
+                (int) (height * .7),
                 true);
         pw.setBackgroundDrawable(new BitmapDrawable());
         pw.setOutsideTouchable(true);
@@ -78,10 +82,31 @@ public class StatsActivity extends ActionBarActivity {
         TextView rn = (TextView) pw.getContentView().findViewById(R.id.repNum);
         TextView sn = (TextView) pw.getContentView().findViewById(R.id.setNum);
         TextView d = (TextView)  pw.getContentView().findViewById(R.id.duration);
+        LineChartView lc = (LineChartView) pw.getContentView().findViewById(R.id.chart);
 
         rn.setText("Rep: " + reps.get(position).getRepNum());
         sn.setText("Set: " + reps.get(position).getSetNum());
         d.setText(reps.get(position).getTimeString());
+
+        ArrayList<AbstractMap.SimpleEntry<Long,Double>> dataZ = reps.get(position).getDataZ();
+        long startTime = reps.get(position).getStartTime();
+
+        List<PointValue> values = new ArrayList<PointValue>();
+        for (int i = 0; i < dataZ.size(); i++) {
+            values.add(new PointValue((float) (dataZ.get(i).getKey() - startTime), (float) (dataZ.get(i).getValue().floatValue())));
+            Log.d("val", "val - " + values.get(i));
+        }
+
+        //In most cased you can call data model methods in builder-pattern-like manner.
+        Line line = new Line(values).setColor(Color.LTGRAY).setCubic(true);
+        line.setHasPoints(false);
+        List<Line> lines = new ArrayList<Line>();
+        lines.add(line);
+
+        LineChartData data = new LineChartData();
+        data.setLines(lines);
+
+        lc.setLineChartData(data);
 
         Log.v("CLICK", "click - " + position + " " + reps.get(position).getTime() / 1000);
     }
