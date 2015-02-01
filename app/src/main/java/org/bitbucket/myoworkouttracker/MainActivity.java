@@ -50,7 +50,6 @@ public class MainActivity extends Activity {
 
     @AfterViews
     void startMyo() {
-				StatsActivity_.intent(this).start();
         Hub hub = Hub.getInstance();
         if (hub.init(this)) {
             Log.d("ACCEL", "Initialized Myo");
