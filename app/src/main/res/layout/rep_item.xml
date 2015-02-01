@@ -1,0 +1,54 @@
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:tools="http://schemas.android.com/tools"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+>
+	<TextView
+		android:id="@+id/timeText"
+		android:textSize="32dp"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:paddingRight="10dp"
+	/>
+	<LinearLayout
+		android:id="@+id/titleContainer"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:layout_toRightOf="@id/timeText"
+	>
+		<TextView
+			android:text="Set:"
+			android:layout_alignParentRight="true"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+		/>
+		<TextView
+			android:text="Rep:"
+			android:layout_alignParentRight="true"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+		/>
+	</LinearLayout>
+	<LinearLayout
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:orientation="vertical"
+		android:layout_toRightOf="@id/titleContainer"
+	>
+		<TextView
+			android:id="@+id/setText"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+		/>
+		<TextView
+			android:id="@+id/repText"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_toRightOf="@id/timeText"
+			android:layout_below="@id/setText"
+		/>
+	</LinearLayout>
+</RelativeLayout>
+
